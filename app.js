@@ -1,5 +1,6 @@
 const express = require("express");
 const {open} = require("sqlite");
+const cors = require('cors');
 const sqlite3 = require("sqlite3");
 const path = require("path");
 const multer = require("multer");
@@ -9,6 +10,7 @@ const upload = multer({storage});
 const app = express();
 let db = null;
 const dbPath = path.join(__dirname,"lists.db");
+app.use(cors());
 app.use(express.json()); // Middleware to parse JSON bodies
 
 const initializeServer = async () => {
