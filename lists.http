@@ -1,0 +1,36 @@
+GET http://localhost:3000/
+
+###
+POST http://localhost:3000/add-task/
+Content-Type: application/json
+
+{
+    "id":5,
+    "taskName":"Bitcoin",
+    "taskStatus":"InProgress"
+}
+
+###
+
+PUT http://localhost:3000/update-task/5/
+Content-Type: application/json
+
+{
+    "id":5,
+    "taskName":"Crypto",
+    "taskStatus":"Start"
+}
+
+###
+
+DELETE http://localhost:3000/delete-task/5/
+
+###
+POST http://localhost:3000/pdfs/
+Content-Type: application/json
+
+{
+    "id":5,
+    "taskName":"Bitcoin",
+    "taskStatus":"InProgress"
+}
