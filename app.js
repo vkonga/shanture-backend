@@ -33,7 +33,7 @@ initializeServer();
 app.get("/", async (request, response) => {
 
     const getTasks = `
-        SELECT * FROM tasks 
+        SELECT * FROM task
         ORDER BY id;
     `;
     const tasksArray = await db.all(getTasks);
@@ -46,7 +46,7 @@ app.post("/add-task/", async (request, response) => {
     const {id,taskName,taskStatus} = taskDetails;
     const addTask = `
         INSERT INTO 
-            tasks (id,task_name,task_status)
+            task (id,task_name,task_status)
         VALUES (
             ${id},'${taskName}','${taskStatus}'
         );
@@ -62,7 +62,7 @@ app.put("/update-task/:id", async (request, response) => {
     const {taskName,taskStatus} = taskDeatils;
 
     const updateTask = `
-        UPDATE tasks
+        UPDATE task
         SET 
             id = ${id}, task_name = '${taskName}',  task_status = '${taskStatus}'
         WHERE id = ${id};
@@ -75,7 +75,7 @@ app.put("/update-task/:id", async (request, response) => {
 app.delete("/delete-task/:id/", async (request,response) => {
     const {id} = request.params;
     const deleteTask = `
-        DELETE FROM tasks
+        DELETE FROM task
         WHERE id = ${id};
     `;
     await db.run(deleteTask);
